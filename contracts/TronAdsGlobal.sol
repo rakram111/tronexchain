@@ -1,6 +1,6 @@
 pragma solidity 0.5.4;
 
-contract TronexSun {
+contract TronAdsGlobal {
 
     struct User {
         address upline ;

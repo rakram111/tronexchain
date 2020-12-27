@@ -12,7 +12,6 @@ export class SmartInfo extends Component {
 
         this.state = {
             count: 0,
-
         }
 
     }

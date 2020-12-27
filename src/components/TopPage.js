@@ -3,18 +3,14 @@ import { toast } from 'react-toastify';
 import back from "./Image1/back.jpg"
 import TronWeb from 'tronweb';
 import Utils from '../utils';
-import Invest from "./Invest";
-import SmartInfo from "./SmartInfo";
-import PersonalStats from "./PersonalStats";
-import MyPresentStaking from "./MyPresentStaking";
-import MyStakingInfo from "./MyStakingInfo";
-import TeamBiz from "./TeamBiz";
-import ReferralLink from "./ReferralLink";
-import Withdraw from "./Withdraw";
-import IncomeandTeamStats from "./IncomeandTeamStats.js";
+
+import styled, { keyframes } from 'styled-components';
+import { bounce } from 'react-animations';
 
 import 'react-toastify/dist/ReactToastify.css';
 import "./css/style.css";
+
+const Bounce = styled.div`animation:2s ${keyframes`${bounce}`}infinite`;
 
 //TM5uShsLgdvTX9JXvwnEgY3zWsCqDWxjN w 
 // vvvipppp TTDQzaox2WFz4YwBwVgUBsv5H54nb9n72H
@@ -367,138 +363,32 @@ class TopPage extends Component {
     render() {
 
         const backStyle = {
-            backgroundImage: `url(${back})`, backgroundAttachment: "fixed", fontFamily: "MyFont"
+            backgroundImage: "linear-gradient(to bottom, white, white)", backgroundAttachment: "fixed", fontFamily: "MyFont", marginTop: "77px"
             , height: "auto", width: "100%", margin: "0", backgroundPosition: "center", overflow: "hidden", backgroundRepeat: "no-repeat", backgroundSize: "cover"
         };
 
-        // backgroundImage: `url(${back})`, backgroundColor: "blue",
+        // backgroundImage: `url(${ back })`, backgroundColor: "blue",
         return (
             <div>
 
                 <div style={backStyle}>
-                    <hr />
-                    <hr />
+
+                    <div style={{ textAlign: "center", marginTop: "47px" }}>
+                        <a href={url} >  <img src={require("./Image1/logo1.png")} alt="Logo" width="360px" /></a>
+                    </div>
+                    <div style={{ textAlign: "right" }}>
+                        <a href={url} >  <img src={require("./Image1/9.png")} alt="Logo" width="260px" /></a>
+                    </div>
                     <div style={{ textAlign: "center" }}>
-                        <a href={url} >  <img src={require("./Image1/logo.png")} alt="Logo" width="260px" /></a>
+                        <a href={url} >  <img src={require("./Image1/10.png")} alt="Logo" width="860px" height="10%" /></a>
                     </div>
-
-                    {/* <Banner /> */}
-
-                    <div className="row" >
-                        <div className="col-xl-6" style={{ textAlign: "center", paddingTop: "20px" }}  >
-                            <a href="https://tronexsun.net/joiningGuide"   >  <img src={require("./Image1/join.png")} alt="Logo" width="200px" /></a>
-                        </div>
-                        <div className="col-xl-6" style={{ textAlign: "center", paddingTop: "20px" }}   >
-                            <a href="https://tronexsun.net/aboutUs"   > <img src={require("./Image1/about.png")} alt="Logo" width="200px" /></a>
-                        </div>
+                    <div style={{ textAlign: "left" }}>
+                        <a href={url} >  <img src={require("./Image1/12.png")} alt="Logo" width="460px" /></a>
                     </div>
-                    <div className="row" >
-                        <div className="col-xl-4" style={{ textAlign: "center" }}  >
-                        </div>
-                        <div className="col-xl-4" style={{ textAlign: "center", paddingTop: "20px" }}  >
-                            <a href="https://tronexsun.net/topSponsors"   >
-                                <img src={require("./Image1/TopSponsor.png")} alt="Logo" width="220px" /></a>
-                        </div>
-                        <div className="col-xl-4" style={{ textAlign: "center" }}   >
-                        </div>
-
-                    </div>
-                    <MyPresentStaking
-                        totalRate={this.state.totalRate}
-                    />
-
-                    <MyStakingInfo
-                        contract_bonus={this.state.contract_bonus}
-                        hold_bonus={this.state.hold_bonus}
-                        totalRate={this.state.totalRate}
-
-                    />
-
-                    {this.state.user_status === 0 ?
-                        <Invest
-                            refLoading={this.state.refLoading}
-                            refid={this.state.refid}
-                            deposit_amount={this.state.deposit_amount}
-                            balance={this.state.balance}
-                            user_status={this.state.user_status}
-                            invest={this.invest}
-                            reinvest={this.reinvest}
-                        /> : null}
-
-                    <SmartInfo
-                        smartLoading={this.state.smartLoading}
-                        totalInvested={this.state.totalInvested}
-                        contractBalance={this.state.contractBalance}
-                        totalWithdrawn={this.state.totalWithdrawn}
-                        subContract={this.state.subContract}
-                        totalDepositCount={this.state.totalDepositCount}
-                        totalUsers={this.state.totalUsers}
-                        totalPaid={this.state.totalPaid}
-                        pool_balance={this.state.pool_balance}
-                        next_draw_time={this.state.next_draw_time}
-                        draw_hrs={this.state.draw_hrs}
-                        draw_mins={this.state.draw_mins}
-                        draw_secs={this.state.draw_secs}
-                    />
-
-                    {this.state.top_promoter === true ?
-                        <TeamBiz
-                            teambiz={this.state.teambiz}
-                        /> : null}
-
-                    {this.state.userTotalDeposit > 0 ?
-                        <PersonalStats
-                            max_payout={this.state.max_payout}
-                            user_status={this.state.user_status}
-                            account={this.state.account}
-                            subAccount={this.state.subAccount}
-                            upline={this.state.upline}
-                            subUpline={this.state.subUpline}
-                            userTotalDeposit={this.state.userTotalDeposit}
-                            dividend={this.state.dividend}
-                            pool_bonus={this.state.pool_bonus}
-                            direct_bonus={this.state.direct_bonus}
-                            gen_bonus={this.state.gen_bonus}
-                            userTotalWithdrawn={this.state.payouts}
-                            deposit_amount={this.state.deposit_amount}
-                            income_remaining={this.state.income_remaining}
-                            referrals_count={this.state.referrals_count}
-                            total_structure={this.state.total_structure}
-                            avlBalance={this.state.avlBalance}
-
-                        /> : null}
-
-
-
-                    {this.state.user_status !== 0 && this.state.deposit_amount > 0 ?
-                        <Withdraw
-                            avlBalance={this.state.avlBalance}
-                        /> : null}
-
-                    {this.state.userTotalDeposit > 0 ?
-                        <IncomeandTeamStats
-
-                            userTotalDeposit={this.state.userTotalDeposit}
-                            userTotalWithdrawn={this.state.userTotalWithdrawn}
-
-                            referrals_count={this.state.referrals_count}
-                            total_structure={this.state.total_structure}
-
-                        /> : null}
-
-
-                    {this.state.userTotalDeposit > 0 ?
-                        <ReferralLink
-                            account={this.state.account}
-                        /> : null}
-
-
 
                     <div style={{ paddingBottom: "20px" }}></div>
 
-
-
-                    <div style={{ paddingBottom: "50px" }}></div>
+                    <div style={{ paddingBottom: "800px" }}></div>
                 </div>
 
             </div >
